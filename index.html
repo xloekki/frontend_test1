@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <title>VIEWER//09</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="topline"></div>
+
+  <div class="tabs" id="tabs">
+    <button class="new-tab" id="newTabButton" type="button" title="New tab">+</button>
+  </div>
+
+  <header>
+    <form class="toolbar" id="navForm">
+      <button type="button" id="backButton" title="Back">←</button>
+      <button type="button" id="forwardButton" title="Forward">→</button>
+      <button type="button" id="reloadButton" title="Reload">↻</button>
+      <button type="button" id="homeButton" title="Home">⌂</button>
+
+      <input
+        id="urlInput"
+        autocomplete="off"
+        spellcheck="false"
+        placeholder="Type a URL or search"
+        aria-label="Website address or search"
+      >
+
+      <button type="button" id="bookmarkButton" title="Bookmark">☆</button>
+      <button type="button" id="themeButton" title="Toggle theme">◐</button>
+      <button type="button" id="menuButton" title="Control panel">☰</button>
+    </form>
+  </header>
+
+  <div class="status-row">
+    <div class="status-left" id="status">Ready.</div>
+
+    <div class="backend-status">
+      <span class="dot" id="backendDot"></span>
+      <span id="backendText">Backend checking…</span>
+    </div>
+
+    <div class="progress" id="progress"></div>
+  </div>
+
+  <main>
+    <div class="start" id="startScreen">
+      <div class="start-card">
+        <div class="brand">
+          <div>
+            <h1 id="brandName">VIEWER//09</h1>
+            <div class="brand-code" id="brandTagline">PUBLIC WEB TEST VIEWER</div>
+          </div>
+
+          <div class="brand-code">
+            PHASES 01—09<br>
+            SAFE BUILD
+          </div>
+        </div>
+
+        <p>
+          A GitHub Pages browser shell backed by an allowlist-based public web viewer.
+          Tabs, history, bookmarks, compatibility reports, caching, diagnostics, and configuration status are built in.
+        </p>
+
+        <div class="quick-grid" id="quickGrid"></div>
+      </div>
+    </div>
+
+    <iframe id="viewer" title="Safe web viewer"></iframe>
+  </main>
+
+  <aside class="drawer" id="drawer">
+    <div class="drawer-head">
+      <h2>CONTROL//PANEL</h2>
+      <button type="button" id="drawerClose">×</button>
+    </div>
+
+    <section class="drawer-section">
+      <div class="drawer-title">Bookmarks</div>
+      <div id="bookmarkList"></div>
+    </section>
+
+    <section class="drawer-section">
+      <div class="drawer-title">Recent history</div>
+      <div id="historyList"></div>
+      <button class="small-button" type="button" id="clearHistoryButton">
+        Clear history
+      </button>
+    </section>
+
+    <section class="drawer-section">
+      <div class="drawer-title">Recently closed</div>
+      <div id="recentlyClosedList"></div>
+    </section>
+
+    <section class="drawer-section">
+      <div class="drawer-title">Backend configuration</div>
+      <div id="configPanel">Open panel to load configuration.</div>
+    </section>
+
+    <section class="drawer-section">
+      <div class="drawer-title">Performance</div>
+      <div id="metricsPanel">Open panel to load metrics.</div>
+    </section>
+
+    <section class="drawer-section">
+      <div class="drawer-title">Domain tester</div>
+
+      <div class="field-row">
+        <input id="domainInput" placeholder="developer.mozilla.org">
+        <button type="button" id="domainTestButton">Test</button>
+      </div>
+
+      <pre id="domainTestOutput">Tests DNS for public hosts. HTTP testing only runs for allowlisted hosts.</pre>
+    </section>
+
+    <section class="drawer-section">
+      <div class="drawer-title">Page inspector</div>
+
+      <button type="button" id="inspectButton">
+        Inspect current page
+      </button>
+
+      <div id="inspectOutput" style="margin-top:10px">
+        Shows redirects, timing, response size, and allowed/blocked dependency hosts.
+      </div>
+    </section>
+  </aside>
+
+  <div class="palette-backdrop" id="paletteBackdrop">
+    <div class="palette">
+      <input
+        id="paletteInput"
+        placeholder="Type a command…"
+        autocomplete="off"
+      >
+      <div class="palette-list" id="paletteList"></div>
+    </div>
+  </div>
+
+  <div class="findbar" id="findbar">
+    <input id="findInput" placeholder="Find on page">
+    <button type="button" id="findPrev">↑</button>
+    <button type="button" id="findNext">↓</button>
+    <button type="button" id="findClose">×</button>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
